@@ -11,6 +11,6 @@ package io.mikecroft.demo.WorkDistributor;
  */
 public enum WorkRequest {
     
-    BUSYWORK,TARTAN_PAINT,LONG_STAND;
+    BUSYWORK,TARTAN_PAINT,LONG_STAND,EXIT;
     
 }

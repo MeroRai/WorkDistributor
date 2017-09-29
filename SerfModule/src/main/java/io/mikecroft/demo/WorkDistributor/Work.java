@@ -20,10 +20,14 @@ public class Work {
                 break;
             case LONG_STAND:
                 fetchLongStand();
+                break;
+            case EXIT:
+                exit();
+                break;
             default:
                 lookBusy();
                 break;
-                
+
         }
 
     }
@@ -31,16 +35,21 @@ public class Work {
     private void mixTartanPaint() {
         lookBusy();
     }
-    
-    private void lookBusy(){
+
+    private void lookBusy() {
+        System.out.println("Serf lookBusy");
         // Scroll all the way to the right on Excel
-        for (int i=0; i<Short.MAX_VALUE; i++){
-            
+        for (int i = 0; i < Short.MAX_VALUE; i++) {
+
         }
     }
 
     private void fetchLongStand() {
         lookBusy();
+    }
+
+    private void exit() {
+        System.exit(0);
     }
 
 }

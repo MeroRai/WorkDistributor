@@ -14,7 +14,7 @@
         <dependency>
             <groupId>fish.payara.api</groupId>
             <artifactId>payara-api</artifactId>
-            <version>4.1.2.173-SNAPSHOT</version>
+            <version>4.1.2.173</version>
             <type>jar</type>
         </dependency>
         <dependency>

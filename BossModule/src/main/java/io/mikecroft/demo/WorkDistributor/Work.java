@@ -22,6 +22,10 @@ public class Work {
                 break;
             case LONG_STAND:
                 fetchLongStand();
+                break;
+            case EXIT:
+                exit();
+                break;
             default:
                 lookBusy();
                 break;
@@ -45,6 +49,10 @@ public class Work {
 
     private void fetchLongStand() {
         lookBusy();
+    }
+
+    private void exit() {
+        System.exit(0);
     }
 
 }
