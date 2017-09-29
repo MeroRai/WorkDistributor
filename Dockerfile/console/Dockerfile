@@ -23,4 +23,4 @@ EXPOSE 4848 8009 8080 8181
 USER payara
 WORKDIR $PAYARA_PATH
 
-ENTRYPOINT ["java", "-jar", "payara-micro.jar", "--deploy", "micro-console.war", "--postbootcommandfile", "healthcheck.txt", "--autobindhttp", "--enablehealthcheck", "true"]
+ENTRYPOINT ["java", "-jar", "payara-micro.jar", "--deploy", "micro-console.war", "--postbootcommandfile", "healthcheck.txt", "--autobindhttp", "--enablehealthcheck", "true", "--port", "8181"]

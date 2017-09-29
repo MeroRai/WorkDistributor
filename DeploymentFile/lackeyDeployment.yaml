@@ -1,0 +1,37 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: lackey
+  labels:
+    name: lackey
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: lackey
+    spec:
+      containers:
+      - name: lackey
+        image: merorai/lackey
+        ports:
+        - name: lackey
+          containerPort: 8083
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lackey
+  labels:
+    name: lackey
+spec:
+  type: NodePort
+  ports:
+    # the port that this service should serve on
+  - port: 80
+    targetPort: 8083
+    nodePort: 30004
+  selector:
+    name: lackey

@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: console
+  labels:
+    name: console
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: console
+    spec:
+      containers:
+      - name: console
+        image: merorai/console
+        ports:
+        - name: console
+          containerPort: 8181
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: console
+  labels:
+    name: console
+spec:
+  type: NodePort
+  ports:
+    # the port that this service should serve on
+  - port: 80
+    targetPort: 8181
+    nodePort: 30001
+  selector:
+    name: console
+

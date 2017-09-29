@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: boss
+  labels:
+    name: boss
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: boss
+    spec:
+      containers:
+      - name: boss
+        image: merorai/boss
+        ports:
+        - name: boss
+          containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: boss
+  labels:
+    name: boss
+spec:
+  type: NodePort
+  ports:
+    # the port that this service should serve on
+  - port: 80
+    targetPort: 8080
+    nodePort: 30002
+  selector:
+    name: boss
+
