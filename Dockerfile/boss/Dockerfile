@@ -16,6 +16,7 @@ RUN wget --quiet -O $PAYARA_PATH/$PKG_FILE_NAME $PAYARA_PKG
 
 RUN wget --quiet -O ${PAYARA_PATH}/bossModule.war https://github.com/MeroRai/demo/blob/master/BossModule.war?raw=true
 RUN wget --quiet -O ${PAYARA_PATH}/healthcheck.txt https://raw.githubusercontent.com/MeroRai/demo/master/healthcheck.txt
+RUN wget --quiet -O ${PAYARA_PATH}/hz.xml https://raw.githubusercontent.com/MeroRai/demo/master/hz.xml
 
 # Default payara ports to expose
 EXPOSE 4848 8009 8080 8181
@@ -23,6 +24,6 @@ EXPOSE 4848 8009 8080 8181
 USER payara
 WORKDIR $PAYARA_PATH
 
-ENTRYPOINT ["java", "-jar", "payara-micro.jar", "--deploy", "bossModule.war", "--postbootcommandfile", "healthcheck.txt", "--autobindhttp", "--enablehealthcheck", "true"]
+ENTRYPOINT ["java", "-jar", "payara-micro.jar", "--hzconfigfile", "hz.xml", "--deploy", "bossModule.war", "--postbootcommandfile", "healthcheck.txt", "--port", "8080", "--autobindhttp", "--name", "Boss"]
 
 

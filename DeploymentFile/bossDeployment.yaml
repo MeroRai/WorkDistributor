@@ -3,17 +3,18 @@ kind: Deployment
 metadata:
   name: boss
   labels:
-    name: boss
+    name: payara
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: boss
+        name: payara
     spec:
       containers:
       - name: boss
         image: merorai/boss
+        imagePullPolicy: Always
         ports:
         - name: boss
           containerPort: 8080
@@ -24,7 +25,7 @@ kind: Service
 metadata:
   name: boss
   labels:
-    name: boss
+    name: payara
 spec:
   type: NodePort
   ports:
@@ -33,5 +34,5 @@ spec:
     targetPort: 8080
     nodePort: 30002
   selector:
-    name: boss
+    name: payara
 

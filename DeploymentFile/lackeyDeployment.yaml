@@ -1,20 +1,20 @@
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: lackey
   labels:
-    name: lackey
+    name: payara
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: lackey
+        name: payara
     spec:
       containers:
       - name: lackey
         image: merorai/lackey
+        imagePullPolicy: Always
         ports:
         - name: lackey
           containerPort: 8083
@@ -25,7 +25,7 @@ kind: Service
 metadata:
   name: lackey
   labels:
-    name: lackey
+    name: payara
 spec:
   type: NodePort
   ports:
@@ -34,4 +34,4 @@ spec:
     targetPort: 8083
     nodePort: 30004
   selector:
-    name: lackey
+    name: payara

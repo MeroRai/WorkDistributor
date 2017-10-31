@@ -1,20 +1,20 @@
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: dogsbody
   labels:
-    name: dogsbody
+    name: payara
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: dogsbody
+        name: payara
     spec:
       containers:
       - name: dogsbody
         image: merorai/dogsbody
+        imagePullPolicy: Always
         ports:
         - name: dogsbody
           containerPort: 8082
@@ -25,7 +25,7 @@ kind: Service
 metadata:
   name: dogsbody
   labels:
-    name: dogsbody
+    name: payara
 spec:
   type: NodePort
   ports:
@@ -34,5 +34,5 @@ spec:
     targetPort: 8082
     nodePort: 30003
   selector:
-    name: dogsbody
+    name: payara
 

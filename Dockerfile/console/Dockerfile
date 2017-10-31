@@ -14,8 +14,9 @@ ENV PKG_FILE_NAME payara-micro.jar
 
 RUN wget --quiet -O $PAYARA_PATH/$PKG_FILE_NAME $PAYARA_PKG
 
-RUN wget --quiet -O ${PAYARA_PATH}/micro-console.war https://github.com/MeroRai/demo/blob/master/micro-console-0.3.3-SNAPSHOT.war?raw=true
+RUN wget --quiet -O ${PAYARA_PATH}/micro-console.war https://github.com/MeroRai/demo/blob/master/micro-console.war?raw=true
 RUN wget --quiet -O ${PAYARA_PATH}/healthcheck.txt https://raw.githubusercontent.com/MeroRai/demo/master/healthcheck.txt
+RUN wget --quiet -O ${PAYARA_PATH}/hz.xml https://raw.githubusercontent.com/MeroRai/demo/master/hz.xml
 
 # Default payara ports to expose
 EXPOSE 4848 8009 8080 8181
@@ -23,4 +24,4 @@ EXPOSE 4848 8009 8080 8181
 USER payara
 WORKDIR $PAYARA_PATH
 
-ENTRYPOINT ["java", "-jar", "payara-micro.jar", "--deploy", "micro-console.war", "--postbootcommandfile", "healthcheck.txt", "--autobindhttp", "--enablehealthcheck", "true", "--port", "8181"]
+ENTRYPOINT ["java", "-jar", "payara-micro.jar", "--hzconfigfile", "hz.xml", "--deploy", "micro-console.war", "--postbootcommandfile", "healthcheck.txt", "--autobindhttp", "--port", "8081", "--name", "Console"]

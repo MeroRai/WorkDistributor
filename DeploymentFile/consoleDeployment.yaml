@@ -3,20 +3,21 @@ kind: Deployment
 metadata:
   name: console
   labels:
-    name: console
+    name: payara
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: console
+        name: payara
     spec:
       containers:
       - name: console
         image: merorai/console
+        imagePullPolicy: Always
         ports:
         - name: console
-          containerPort: 8181
+          containerPort: 8081
 
 ---
 apiVersion: v1
@@ -24,14 +25,14 @@ kind: Service
 metadata:
   name: console
   labels:
-    name: console
+    name: payara
 spec:
   type: NodePort
   ports:
     # the port that this service should serve on
   - port: 80
-    targetPort: 8181
+    targetPort: 8081
     nodePort: 30001
   selector:
-    name: console
+    name: payara
 
