@@ -24,6 +24,6 @@ EXPOSE 4848 8009 8080 8181
 USER payara
 WORKDIR $PAYARA_PATH
 
-ENTRYPOINT ["java", "-jar", "payara-micro.jar", "--hzconfigfile", "hz.xml", "--deploy", "DogsbodyModule.war", "--port", "8082" "--autobindhttp", "--name", "DogsBody"]
+ENTRYPOINT ["java", "-jar", "payara-micro.jar", "--hzconfigfile", "hz.xml", "--deploy", "DogsbodyModule.war", "--port", "8082", "--autobindhttp", "--name", "DogsBody"]
 
 
